@@ -7,8 +7,9 @@ import java.util.Objects;
 @Table(name="accounts")
 public class Account {
     @Id
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long myId;
+    
     private String firstName;
     private String lastName;
     private String myAddress;

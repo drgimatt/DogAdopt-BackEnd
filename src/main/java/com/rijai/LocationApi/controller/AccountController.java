@@ -2,6 +2,9 @@ package com.rijai.LocationApi.controller;
 
 import com.rijai.LocationApi.model.Account;
 import com.rijai.LocationApi.service.IAccountService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +16,11 @@ public class AccountController {
     @RequestMapping(value="/api/create-account", method= RequestMethod.POST)
     public Account createAccount(@RequestBody Account account) {
         return accountService.createAccount(account);
+    }
+
+    @GetMapping(value = "/api/accounts")
+    public List<Account> showAllAccount() {
+        return accountService.findAll();
     }
 
     @GetMapping(value = "/api/show-account/{id}")
