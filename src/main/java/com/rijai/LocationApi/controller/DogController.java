@@ -38,7 +38,7 @@ public class DogController {
     }
 
     @RequestMapping(value="/api/update-dog/{id}", method=RequestMethod.PUT)
-    public Dog updateDog(@RequestParam("id") Long id, @RequestParam(value = "photo", required = false) MultipartFile file, @RequestParam("name") String name, @RequestParam("breed") String breed, @RequestParam("age") int age, @RequestParam("doa") Date doa, @RequestParam("personality") String personality, @RequestParam("status") String status, @RequestParam("gender") String gender) throws IOException {
+    public Dog updateDog(@PathVariable("id") Long id, @RequestParam(value = "photo", required = false) MultipartFile file, @RequestParam("name") String name, @RequestParam("breed") String breed, @RequestParam("age") int age, @RequestParam("doa") Date doa, @RequestParam("personality") String personality, @RequestParam("status") String status, @RequestParam("gender") String gender) throws IOException {
         byte[] bytes = null;
         if (file != null) {
             bytes = file.getBytes();
