@@ -27,16 +27,9 @@ public class RequestController {
     public List<Request> findRequests(){
         return requestService.getRequests();
     }
+
     @RequestMapping(value="/api/create-request", method= RequestMethod.POST)
-    public Request createRequest(@RequestParam("dogId") Long did, @RequestParam("userId") Long uid, @RequestParam("name") String name, @RequestParam("contact") String contact, @RequestParam("message") String message, @RequestParam("status") String status) throws JsonMappingException, JsonProcessingException {
-        // Fetch the Dog from the database based on the provided dogId
-        Dog dog = dogService.getDog(did);
-        Account account = accountService.getAccount(uid);
-    
-        // Create a new Request object with the retrieved Dog
-        Request request = new Request(null, dog.getId(), account.getMyId(), name, contact, message, status);
-    
-        // Persist the Request object in the database
+    public Request createRequest(@RequestBody Request request) {
         return requestService.createRequest(request);
     }
 
