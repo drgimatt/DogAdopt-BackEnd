@@ -1,6 +1,5 @@
 package com.rijai.LocationApi.service;
 
-import com.rijai.LocationApi.model.Account;
 import com.rijai.LocationApi.model.Request;
 import com.rijai.LocationApi.repository.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +33,12 @@ public class RequestService implements IRequestService {
 
     public Request updateRequest(Long id, Request request) {
         return requestRepository.save(request);
+    }
+
+    public void deleteRequest(Long id){
+        Optional<Request> request = requestRepository.findById(id);
+        if(request.isPresent()) {
+            requestRepository.delete(request.get());
+        }
     }
 }
