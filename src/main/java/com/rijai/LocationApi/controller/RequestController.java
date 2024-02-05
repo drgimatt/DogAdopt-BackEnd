@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+
 @CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
@@ -38,11 +39,14 @@ public class RequestController {
         return requestService.updateRequest(id, request);
     }
     
-
     @GetMapping(value = "/api/show-request/{id}")
     public Request showRequest(@PathVariable Long id) {
         return requestService.getRequest(id);
     }
 
-
+    @RequestMapping(value = "/api/delete-request/{id}",  method = RequestMethod.DELETE)
+    public void deleteRequest(@PathVariable("id") Long id) {
+        requestService.deleteRequest(id);
+    }
+    
 }
